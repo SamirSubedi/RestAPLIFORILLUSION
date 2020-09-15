@@ -3,6 +3,7 @@
 
 
 @section('headSection')
+
 <style>
 
 
@@ -37,6 +38,7 @@ a.hell:link, a.hell:visited {
   font-size:10px;
   font-weight: normal;
 }
+
 a.hello:hover, a.hello:active {
   background-color:navy;
   display: inline-block;
@@ -91,7 +93,7 @@ input[type=button], input[type=submit], input[type=reset] {
              
             <h2 class="mb-3">{{$slug->title}}</h2>
             <span class="icon-calendar"></span> {{$slug->created_at}}
-   <div class="fb-like" data-href="{{Request::url()}}" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="false"></div>
+   <div class="fb-like" data-href="{{Request::url()}}" data-width="200" data-layout="standard" data-action="like" data-size="small" data-share="false"></div>
    <hr>
             <p>  <i>'{{$slug->subtitle}}'</i></p>
             <p>
@@ -108,26 +110,26 @@ input[type=button], input[type=submit], input[type=reset] {
             </div>
             
        
-            <a href="https://www.youtube.com/watch?v=vxtOglAcYZQ&list=RDvxtOglAcYZQ&start_radio=1" name="hello" class="hello">
-                                View Promotional Video
-                                </a>
+          
 
-            <div class="pt-5 mt-5">
+            <div class="pt-5">
               <h3 class="mb-5 h4 font-weight-bold">Facebook Comments</h3>
+      
               <ul class="comment-list">
                 
 
-           
+              <div class="fb-comments" data-href="{{Request::url()}}"  data-colorscheme="dark" data-numposts="6"  data-width=""></div>
 
                 
               <div class="comment-list">
                         <div class="single-comment justify-content-between d-flex">
                            <div class="user justify-content-between d-flex">
-                           <div class="fb-comments" data-href="{{Request::url()}}" data-numposts="6" data-width=""></div>
+
                            </div>
                         </div>
                      </div>
               </ul>
+            
               <!-- END comment-list -->
          
               

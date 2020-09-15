@@ -1,41 +1,65 @@
 
 @extends('layouts.app')
-@section('main-content')
-    <!-- END nav -->
-	<header>
-  <div class="overlay"></div>
-  <video playsinline="playsinline" autoplay="autoplay" loop="loop">
-  <source src="{{URL::asset('/user/images/Fb.mp4')}}" type="video/mp4">
- 
-  </video>
-  
-  <div class="container h-100">
-    <div class="d-flex h-100 text-center align-items-center">
-      <div class="w-100 text-white">
-		<h3 class="display-4" style="color:white;">Best Bartender Academy</h>
-		
-		<p><a href="/services" class="btn btn-primary px-4 py-3 mt-3">Courses</a></p>
-      </div>
-    </div>
-  </div>
-</header>
+@section('headSection')
+<style>
 
-   
-	
-		<section class="ftco-section ftco-no-pt ftc-no-pb">
+video {
+  width: 100%;
+  height: auto;
+}
+
+
+@media only screen and (min-width: 600px) {
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+
+@media only screen and (min-width: 768px) {
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+</style>
+@endsection
+@section('main-content')
+    <video width="400" controls autoplay playsinline>
+      <source src="{{URL::asset('/user/images/fb.mp4')}}"  type="video/mp4">
+      <source src="mov_bbb.ogg" type="video/ogg">
+      Your browser does not support HTML5 video.
+    </video>
+	<section class="ftco-section ftco-no-pt ftc-no-pb">
 			<div class="container">
 				<div class="row d-flex">
 				
 					<div class="col-md-12 wrap-about py-5 pr-md-4 ftco-animate">
           	<h2 class="mb-4">What We Offer</h2>
-						<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word.</p>
+						<p>We offer Bartending Course for basic learners as well as who have work experience behind the bars.Our course is mainly focused on practical based training which included mixology, flair, free pouring and Theory.We Provide Bartending Training, Flair Training, Flair Practice Room Barista Training, Bar Design, Job Placement Trainings.</p>
 						<div class="row mt-5">
 							<div class="col-lg-4">
 								<div class="services-2 d-flex">
 									<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-security"></span></div>
 									<div class="text pl-3">
 										<h3>Safety First</h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+										<p>We focus on safety of our students and mentors.So, safety protocol is followed strictly.</p>
 									</div>
 								</div>
 							</div>
@@ -44,7 +68,7 @@
 									<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-reading"></span></div>
 									<div class="text pl-3">
 										<h3>Regular Classes</h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+										<p>We are concerned for the the timely completion of the courses. </p>
 									</div>
 								</div>
 							</div>
@@ -53,7 +77,7 @@
 									<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-diploma"></span></div>
 									<div class="text pl-3">
 										<h3>Certified Teachers</h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+										<p>We have a team of expertise having insight on the particular subject domain focusing on providing excellent skills to our students.</p>
 									</div>
 								</div>
 							</div>
@@ -62,7 +86,7 @@
 									<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-education"></span></div>
 									<div class="text pl-3">
 										<h3>Sufficient Classrooms</h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+										<p>Our classed are well equipped and adequate to address the modern tools and designs..</p>
 									</div>
 								</div>
 							</div>
@@ -71,7 +95,7 @@
 									<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-jigsaw"></span></div>
 									<div class="text pl-3">
 										<h3>Creative Lessons</h3>
-										<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
+										<p>Knowledge and skills are a part of higher learning. We focus on skill oriented knowledge teaching. </p>
 									</div>
 								</div>
 							</div>
@@ -96,59 +120,27 @@
 				<div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
             <h2 class="mb-4">Some of our works</h2>
-            <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+            <p></p>
           </div>
         </div>	
 		<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-lg-4 ftco-animate">
+					
+				@foreach($video as $blog)
+					<div class="col-md-4 col-lg-4 ftco-animate">
 						<div class="staff">
 							<div class="img-wrap d-flex align-items-stretch">
 								<div class="img align-self-stretch" ></div>
-								<iframe width="400" height="300" src="https://www.youtube.com/embed/Z2F4xZLDaX4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								<iframe width="400" height="300" src="{{$blog->yvideo}}"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 							</div>
 							<div class="text pt-3 text-center">
-								<h3>Title</h3>
-								<span class="position mb-2">Excursion</span>
-								<div class="faded">
-									<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
-							
-	              </div>
+								<h3>{{$blog->title}}</h3>
+								<span class="position mb-2">{!! htmlspecialchars_decode($blog->descrip) !!}</span>
+								
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-4 ftco-animate">
-						<div class="staff">
-							<div class="img-wrap d-flex align-items-stretch">
-								<div class="img align-self-stretch" ></div>
-								<iframe width="400" height="300" src="https://www.youtube.com/embed/xZiDfozmbRE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-							</div>
-							<div class="text pt-3 text-center">
-								<h3>Title</h3>
-								<span class="position mb-2">Meet Up</span>
-								<div class="faded">
-									<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
-							
-	              </div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4 ftco-animate">
-						<div class="staff">
-							<div class="img-wrap d-flex align-items-stretch">
-								<div class="img align-self-stretch" ></div>
-								<iframe width="400" height="300" src="https://www.youtube.com/embed/WzCgpCQqXLk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-							</div>
-							<div class="text pt-3 text-center">
-								<h3>Title</h3>
-								<span class="position mb-2">Event</span>
-								<div class="faded">
-									<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
-							
-	              </div>
-							</div>
-						</div>
-					</div>
+					@endforeach
 					</div>
 					</div>
 					
@@ -161,7 +153,7 @@
 				<div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
             <h2 class="mb-4"><span>Our</span>  Main Courses</h2>
-            <p>We focus on.......................................................</p>
+            <p>We focus on creating competent and skill oriented bartenders focusing on theoretical technique of teaching. Here are our core course:  </p>
           </div>
         </div>	<div class="container">
 				<div class="row">
@@ -203,7 +195,7 @@
 			<div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
             <h2 class="mb-4"><span>Recent</span> Blog</h2>
-            <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+            <p>Our latest Blog are shown below:</p>
           </div>
         </div>
 				<div class="row">
@@ -218,7 +210,7 @@
                                 $year=substr($m,0,4);
 
                             ?>
-          <div class="col-md-6 col-lg-4 ftco-animate">
+          <div class="col-md-4 col-lg-4 ftco-animate">
             <div class="blog-entry">
               <a  href="/blog-details/{{$blog->slug}}" class="block-20 d-flex align-items-end"  style="background-image: url('{{ asset('storage/blog_images/'.$blog->image)}}');">
 								<div class="meta-date text-center p-2">
@@ -252,7 +244,7 @@
         <div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
             <h2 class="mb-4">Student Says About Us</h2>
-            <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+            <p>Here is our students experience and suggestions regarding us.</p>
           </div>
         </div>
         <div class="row ftco-animate justify-content-center">
@@ -267,8 +259,8 @@
                       <i class="icon-quote-left"></i>
                     </span>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Racky Henderson</p>
-                    <span class="position">Father</span>
+                    <p class="name">Prashant Gautam</p>
+					<span class="position">flair Course</span>
                   </div>
                 </div>
               </div>
@@ -296,7 +288,7 @@
                     </span>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                     <p class="name">Mark Huff</p>
-                    <span class="position">Mother</span>
+					<span class="position">Basic Barista Course</span>
                   </div>
                 </div>
               </div>
@@ -310,7 +302,7 @@
                     </span>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                     <p class="name">Rodel Golez</p>
-                    <span class="position">Mother</span>
+                    <span class="position">Advanced Bartending Course</span>
                   </div>
                 </div>
               </div>
@@ -324,7 +316,7 @@
                     </span>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                     <p class="name">Ken Bosh</p>
-                    <span class="position">Mother</span>
+                    <span class="position">Basic Barista Course</span>
                   </div>
                 </div>
               </div>
@@ -333,5 +325,5 @@
         </div>
       </div>
     </section>
-<br>
+<br><br><br><br>
     @endsection

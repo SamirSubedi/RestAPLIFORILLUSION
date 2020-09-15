@@ -1,10 +1,10 @@
 <div class="bg-top navbar-light">
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
-    			<div class="col-md-4 d-flex align-items-center py-4">
-    				<a class="navbar-brand" href="index.html"><img src="{{ asset('user/logo.jpg') }}" width="210" height="65"></a>
+    			<div class="col-md-4 col-sm-12 col-xs-12 d-flex align-items-center py-1">
+    				<a class="navbar-brand" href="index.html"><img src="{{ asset('user/logo.jpg') }}" width="150" height="54"></a>
     			</div>
-	    		<div class="col-lg-8 d-block">
+	    		<div class="col-lg-8 col-sm-12 col-xs-12 d-block">
 		    		<div class="row d-flex">
 					    <div class="col-md d-flex topper align-items-center align-items-stretch py-md-4">
 					    	<div class="icon d-flex justify-content-center align-items-center"><span class="icon-envelope"></span>&nbsp;youremail@email.com</div>
@@ -64,6 +64,28 @@
 			  </li>
 	        	<li class="nav-item"><a href="/blog1" class="nav-link">Blog</a></li>
 			  <li class="nav-item"><a href="/profile" class="nav-link">Bartender</a></li>
+			  <li class="nav-item"><a href="/products" class="nav-link">Products</a></li>
+			  <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle"
+                       href="#" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false"
+                    >
+                        <span class="badge badge-pill badge-dark">
+                            <i class="fa fa-shopping-cart"></i>&nbsp;Cart {{ \Cart::getTotalQuantity()}}
+                        </span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="width: 450px; padding: 0px; border-color: #9DA0A2">
+                        <ul class="list-group" style="margin: 20px;">
+						@include('partials.cart-drop')
+                        </ul>
+
+                    </div>
+                </li>
+
+
+
+
 
 			  <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
 			  <li class="nav-item"><a class="nav-link" href="/">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>

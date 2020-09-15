@@ -20,6 +20,7 @@ class ApplyFormMail extends Mailable
     public function __construct($data)
     {
         $this->data = $data;
+      
     }
 
     /**
@@ -30,5 +31,11 @@ class ApplyFormMail extends Mailable
     public function build()
     {
         return $this->markdown('emails.contact.apply-form');
+      
+      
+       
+     
+       
+        
     }
 }

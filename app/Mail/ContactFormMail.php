@@ -38,8 +38,8 @@ class ContactFormMail extends Mailable
     public function build()
     {
         return $this->markdown('emails.contact.contact-form');
-                   attach($this->data['file']->getRealPath(), [
-                    'as' => $this->data['file']->getClientOriginalName()
-                    ]);
+     
+              
+                 
     }
 }

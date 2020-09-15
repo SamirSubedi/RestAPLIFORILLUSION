@@ -71,9 +71,9 @@
        </div></div>
        
 
-       <label for="exampleInputFile">Album Short Description here</label>
+       <label for="exampleInputFile">&nbsp;&nbsp;Blog Short Description here</label>
 
-<textarea id="editor1" name="descrip" rows="10" cols="80">
+<textarea id="editor1" name="body" value="{{ $post->body }}" rows="10" cols="80">
 {{$post->body}}                     
       </textarea>
 </div>

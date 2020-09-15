@@ -1,20 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Support\Facades\File;
-use App\Post;
-use App\category;
-
+use App\Product;
+use App\Cat_Product;
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class ProductController extends Controller
 {
-
-    public function __construct()
-    {
-            $this->middleware('auth:admin');
-       }
     /**
      * Display a listing of the resource.
      *
@@ -22,11 +14,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-       //get();
-        $abc = Post::orderBy('id','desc')->paginate(6);
-
-        //dd($blogs);
-      return view('blog.index',compact('abc'));
+      
+       $product=Product::orderBy('id','desc')->paginate(7);
+       return view('product.index',compact('product'));
     }
 
     /**
@@ -36,8 +26,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $abc =  category::orderBy('id','asc')->get();
-        return view('blog.create',compact('abc'));
+        $category=Cat_Product::all();
+        
+       return view('product.create',compact('category'));
     }
 
     /**
@@ -49,10 +40,8 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'=>'required|unique:posts|min:2|max:20',
-            'subtitle' => 'required|min:40|max:120',
-            'slug' => 'required',
-            'body' => 'required',
+            'name'=>'required|unique:products|min:2|max:20',
+           
             'image'=>'required|image'
             ]);
 
@@ -72,35 +61,35 @@ class BlogController extends Controller
         $filenameToStore = $filename.'_'.time().'.'.$extension;
         //Upload image
        //Image::make(file('image'))->resize(750, 375);
-        $path = $request->file('image')->storeAs('public/blog_images', $filenameToStore);
+        $path = $request->file('image')->storeAs('public/product_images', $filenameToStore);
                }
                else{
                    $FileNameToStore = 'noimage.jpg';
                }
            
-      $blogs = new Post();
-      $blogs->title = $request->title;
-      $blogs->subtitle = $request->subtitle;
-      
+      $blogs = new Product();
+      $blogs->name = $request->name;
+      $blogs->price = $request->price;
+      $blogs->quantity = $request->quantity;
       $blogs->slug = $request->slug;
-      $blogs->body = $request->body;
+      $blogs->description = $request->descrip;
+      $blogs->category = $request->check;
       $blogs->image = $filenameToStore;
-    
       $blogs->save();
-      $blogs->categories()->sync($request->categories);
-      $request->session()->flash('message','Blog added Successfully');
- 
-      return \Redirect('/blog');
+      $request->session()->flash('message','Products added Successfully');
+      return \Redirect('/product');
       
     }
+
+   
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show($id)
     {
         //
     }
@@ -108,40 +97,31 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Blog  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-
-       // $blogs = Post::find($id);
-        
-
-        //dd($blogs);
-         //return view('blog.edit',compact('blogs'));
-
-         $post = Post::with('categories')->where('id',$id)->first();
-        
-         $categories =Category::all();
-         return view('blog.edit',compact('categories','post'));
+        $post = Product::find($id);    
+        return view('product.edit',compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-
+        $filenameToStore =  Product::find($id)->image;
         
-        $filenameToStore = Post::find($id)->image;
-        $blogs = Post::find($id);
-       
-       
-        if($request->hasFile('image')){
+        $namedb =  Product::find($id)->name;
+        $slugdb =  Product::find($id)->slug;
+
+        $blogs = Product::find($id);
+       if($request->hasFile('image')){
             //Get filename with the extension
             $filenameWithExt = $request->file('image')->getClientOriginalName();
             //Get just file name 
@@ -152,45 +132,52 @@ class BlogController extends Controller
             $filenameToStore = $filename.'_'.time().'.'.$extension;
             //Upload image
            // Image::make(file('image'))->resize(750, 375);
-            $path = $request->file('image')->storeAs('public/blog_images', $filenameToStore);
+            $path = $request->file('image')->storeAs('public/product_images', $filenameToStore);
                    }
                  
-                   $blogs->body = $request->body;
-        $blogs->title = $request->title;
-        $blogs->subtitle = $request->subtitle;
-        $blogs->image = $filenameToStore;
-        $blogs->categories()->sync($request->categories);
-        $blogs->save();
-        return \Redirect('/blog');
+               
+                  
+                   if($namedb!=$request->name)
+                   {
+                    $blogs->name = $request->name;
+                   }
+
+                   if($slugdb!=$request->slug)
+                   {
+                    $blogs->slug = $request->slug;
+                   }
+                   $blogs->price = $request->price;
+                   $blogs->quantity = $request->quantity;
+             
+                   $blogs->description = $request->descrip;
+                   $blogs->image = $filenameToStore;
+                   $blogs->save();
+                   $request->session()->flash('message','Products Updated Successfully');
+                   return \Redirect('/product');
+
+
 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $blog
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        
-        $blogs = Post::find($id);
+        $blogs = Product::find($id);
     
     
 
-        unlink(storage_path('app/public/blog_images/'.$blogs->image));
+        unlink(storage_path('app/public/product_images/'.$blogs->image));
   
     
-        post::where('id',$id)->delete();
+        Product::where('id',$id)->delete();
         
-        session()->flash('message','Blog deleted Successfully');
-        return redirect('/blog');
+        session()->flash('message','Product deleted Successfully');
+        return redirect('/product');
 
-
-        //$post = Post::find($id);
-      
-        //check for correct user to edit their own postoi
-      //$post->delete();
-     // return redirect('/blog');
     }
 }

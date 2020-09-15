@@ -29,6 +29,9 @@ Route::get('facebook', function () {
     return view('facebook');
 
 });
+
+Route::post('/searchprofile', 'HomeController@searchprofile'); 
+
 Route::get('/profile', 'HomeController@profile');
 Route::get('auth/facebook', 'Auth\FacebookController@redirectToFacebook');
 
@@ -50,6 +53,16 @@ Route::resource('album', 'AlbumController');
 Route::resource('gallery', 'GalleryController');
 Route::resource('bartender', 'BartenderController');
 Route::resource('video', 'VideoController');
+Route::resource('product', 'ProductController');
+Route::resource('pcategory', 'PcategoryController');
+Route::get('/products', 'CartController@shop')->name('shop');
+Route::get('/cart', 'CartController@cart')->name('cart.index');
+Route::post('/add', 'CartController@add')->name('cart.store');
+Route::post('/update', 'CartController@update')->name('cart.update');
+Route::post('/remove', 'CartController@remove')->name('cart.remove');
+Route::post('/clear', 'CartController@clear')->name('cart.clear');
+
+
 
 
 

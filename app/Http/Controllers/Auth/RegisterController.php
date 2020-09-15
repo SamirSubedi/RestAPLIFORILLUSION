@@ -66,7 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        Session::flash('status','Registered but verify your email to activate your account');
+        Session::flash('status','Registered but verify your email to activate your account.May takes 2-4 minutes to receive mail');
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -88,7 +88,7 @@ class RegisterController extends Controller
     
     public function verifyEmailfirst()
     {
-        return view('auth.verifyEmailfirst');
+        return view('auth.verifyEmailfirst')->subject('Confirmation Mail From Illusion');
     }
    
     public function sendEmailDone($email,$verifyToken)

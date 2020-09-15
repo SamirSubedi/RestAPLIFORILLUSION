@@ -17,7 +17,7 @@ class AdminHomeController extends Controller
     //$name=auth()->user()->phone;
      //dd($name) ;
         
-      return view('Admin/dashboard');
+      return view('admin/dashboard');
     }
 
 }

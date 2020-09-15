@@ -8149,7 +8149,8 @@ a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
-  color: white; }
+  color: white;
+ }
   a:hover, a:focus {
     text-decoration: none;
     color: #C3805A;
@@ -9204,7 +9205,7 @@ textarea.form-control {
       header {
         position: relative;
         background-color: black;
-        height: 130vh;
+        height: 100vh;
         min-height: 25rem;
         width: 100%;
         overflow: hidden;

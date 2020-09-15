@@ -3,14 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\category;
-
-class CategoryController extends Controller
+use App\Cat_Product;
+class PcategoryController extends Controller
 {
-    public function __construct()
-    {
-            $this->middleware('auth:admin');
-       }
     /**
      * Display a listing of the resource.
      *
@@ -18,11 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $abc = category::orderBy('id','desc')->get();
-
-        //dd($blogs);
-      return view('category.index',compact('abc'));
-      
+        $product=Cat_Product::orderBy('id','desc')->paginate(12);
+        return view('product_category.index',compact('product'));
     }
 
     /**
@@ -32,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+       return view('product_category.create');
     }
 
     /**
@@ -43,23 +35,25 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-
-        $this->validate($request,[
-            'name'=>'required|unique:categories|min:2|max:20',
-          
-            'slug' => 'required',
-           
-            ]);
-        $blogs = new category();
-        $blogs->name = $request->name;
-        $blogs->slug = $request->slug;
      
+      $this->validate($request,[
+        'name'=>'required|unique:cat__products|min:2|max:20',
       
-        $blogs->save();
-        $request->session()->flash('message','Category added Successfully');
+     
+       
+        ]);
+    $blogs = new Cat_Product();
+    $blogs->name = $request->name;
+    
+ 
+  
+    $blogs->save();
+    $request->session()->flash('message','Category added Successfully');
+
+    return \Redirect('/pcategory');
+}
+
    
-        return \Redirect('/category');
-    }
 
     /**
      * Display the specified resource.
@@ -80,10 +74,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = category::find($id);
+    
 
-        //dd($blogs);
-         return view('category.edit',compact('category'));//
+        $category = Cat_Product::find($id);    
+        return view('product_category.edit',compact('category'));
     }
 
     /**
@@ -95,11 +89,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cat = category::find($id);
-        $cat->name = $request->name;
-        $cat->slug = $request->slug;
-        $cat->save();
-        return \Redirect('/category');
+       
+        $blogs=Cat_Product::find($id);
+        $blogs->name=$request->name;
+        $blogs->save();
+        $request->session()->flash('message','Product Category Updated Successfully');
+        return redirect('/pcategory');
     }
 
     /**
@@ -110,6 +105,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+ 
+        Cat_Product::where('id',$id)->delete();
+        
+        session()->flash('message','Product Category deleted Successfully');
+        return redirect('/pcategory');
     }
 }

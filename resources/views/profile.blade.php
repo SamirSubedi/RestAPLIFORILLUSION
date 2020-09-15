@@ -23,7 +23,7 @@ p.groove {
 }
     a.he:link, a.he:visited {
   background-color:green;
-
+color:white;
   padding: 8px 9px;
   text-align: center;
   text-decoration: none;
@@ -34,10 +34,11 @@ p.groove {
 a.hel:hover, a.hel:active {
   background-color:blue;
   display: inline-block;
+  color:white;
 }
     a.hel:link, a.hel:visited {
   background-color:blue;
-
+  color:white;
   padding: 8px 9px;
   text-align: center;
   text-decoration: none;
@@ -81,12 +82,23 @@ a.hel:hover, a.hel:active {
         </div>
       </div>
     </section>
-
-
+<br><br>
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-xs-12 col-sm-12"></div>
+<div class="col-lg-4 col-xs-12 col-sm-12">
+<div class="search-container">
+    <form action="/searchprofile" method="POST" role="search">&nbsp;&nbsp;&nbsp;
+    {{ csrf_field() }}
+      <input type="text" placeholder="Search Bartender Here" required name="q">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div></div>
+@if(isset($abc))
         <div class="container">
- <br>
-
     <div class="row">
+    
 @foreach($abc as $blog)
 
 
@@ -102,9 +114,13 @@ $substring = substr($string, 0, strpos($string, ' '));?>
 
     <div class='card-body'>
 
-    <a href="/bartender/{{$blog->id}}">  <h3 class='card-title'>{{$blog->name}}</h3></a>
+    <h3 class='card-title'>{{$blog->name}}</h3>
       <p class='card-text'><i>{{$blog->email}}</i></p>
-      <p class='groove'><b>Experience :3 Years experience in bartending flair and barista in event manafjabfje</b></p>
+      <p class='groove'><b>Experience : {{$blog->experience}}<?php if($blog->experience ==NULL) 
+      {
+        echo "No, any prior relevant experience";
+      }?>
+      </b></p>
       <p class='card-text'><b>Address :Gongabu, Kathmandu</b></p>
      <div class="card-footer text-muted"><a class="he" name="he" href="{{ asset('storage/cv_files/'.$blog->cv) }}"><i class="fas fa-book-open"></i>&nbsp;&nbsp; C.V&nbsp;&nbsp;</a>
      <?php $abcd= $blog->video; if(!is_null($abcd)){?>  <a class="hel" name="hel" href="{{$blog->video}}"><i class="fas fa-book-open"></i>&nbsp;&nbsp;Promo Video&nbsp;&nbsp;</a><?php }?>
@@ -120,6 +136,14 @@ $substring = substr($string, 0, strpos($string, ' '));?>
 @endforeach
 </div><br>
 {!! $abc->render() !!}
+@else
+
+  <br>
+  <a href="/profile"  ><i class="ion-ios-arrow-back"></i>- Back</a>
+  <div class="alert alert-success">{{ $message}}</div>
+  <br>
+
+@endif
 </div>                 </div>
 </div>
 <script>
@@ -127,32 +151,15 @@ $substring = substr($string, 0, strpos($string, ' '));?>
 
         $('.col-lg-4').hover(
             // trigger when mouse hover
-            function(){
-                $(this).animate({
-                    marginTop: "-=1%",
-                },200);
-            },
+        
 
             // trigger when mouse out
             function(){
                 $(this).animate({
-                    marginTop: "0%"
+                   
                 },200);
             }
         );
     });
 </script>
-
-
-
-
-
-
-
-
-
-       
-         
-  
- 
 @endsection

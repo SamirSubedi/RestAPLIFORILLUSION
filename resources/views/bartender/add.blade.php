@@ -4,7 +4,10 @@
 textarea {
     resize: none;
 }
-
+.form-group.required .control-label:after {
+  content:"*";
+  color:red;
+}
 #count_message {
   background-color: smoke;
   margin-top: -20px;
@@ -95,8 +98,8 @@ a.hello:hover, a.hello:active {
 		<div class="col-md-4">         <form role="form" action="/bartender" method="post" enctype="multipart/form-data">
           {{csrf_field()}}
           <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<img id="blah" src="#" width="190px" height="150px"></img><br> <div class="form-group">
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  <label for="unit">Upload Your Image Here:</label>
+		<img id="blah" src="#" width="190px" height="150px"></img><br><div class="form-group required">
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  <label class="control-label" for="unit">Upload Your Image Here:</label>
           <input type="file"  onchange="readURL(this);"  name="image" required >
       
     </div>                     </div>
@@ -104,26 +107,26 @@ a.hello:hover, a.hello:active {
 		<div class="col-sm-4">
 
 
-	 <div class="form-group">
-    <label for="fname">Full Name:</label>
-    <input type="text" class="form-control" name="name" required>
+    <div class="form-group required">
+    <label class="control-label" for="fname">Full Name:</label>
+    <input type="text" class="form-control" name="name" required="required">
   </div>
  
-   <div class="form-group">
-    <label for="email">Email address:</label>
+  <div class="form-group required">
+    <label class="control-label" for="email">Email address:</label>
     <input type="email" class="form-control" name="email"  required>
   </div>
   <div class="form-group">
     <label for="phone">Phone:</label>
-    <input type="text" class="form-control" name="phone"  required>
+    <input type="text" class="form-control" name="phone"  >
   </div>
-  <div class="form-group">
-    <label for="pwd">Address:</label>
+  <div class="form-group required">
+    <label class="control-label" for="pwd">Address:</label>
     <input type="text" class="form-control" name="address"  required>
   </div><br>
   <div class="form-group">
     <label for="pwd">Promotional Video:</label>
-    <input type="text" class="form-control" name="video" placeholder="Copy Youtube link here" required>
+    <input type="text" class="form-control" name="video" placeholder="Copy Youtube link here">
   </div><br>
   <div class="form-group">
   <label for="pwd">Experience (if any):</label>
@@ -131,8 +134,8 @@ a.hello:hover, a.hello:active {
       	 maxlength="50" placeholder="Type in your message" rows="5"></textarea>
         <span class="pull-right label label-default" id="count_message"></span>
       	</div><br>
-   <div class="form-group">
-    <label for="pwd2">Upload Your Cv</label>
+        <div class="form-group required">
+    <label class="control-label" for="pwd2">Upload Your Cv</label>
     <input type="file" class="form-control" name="file"  required>
   </div>
 
@@ -169,4 +172,5 @@ $('#text').keyup(function() {
         }
     }
 </script>
+<br>
 @endsection
